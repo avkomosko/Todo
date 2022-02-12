@@ -1,9 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-type FormData = {
-  [key: string]: string;
-}
+import { FormData } from '../models/interfaces';
 
 @Component({
   selector: 'app-form',

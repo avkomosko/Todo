@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from './models/interfaces';
-
-type PartTask = Pick<Task, 'id'| 'title' >;
-
-interface TasksState {
-  all: Task[],
-  find: Task[],
-  filtered: Task[],
-}
+import { Task, PartTask, TasksState } from './models/interfaces';
 
 @Component({
   selector: 'app-root',
