@@ -1,0 +1,37 @@
+.task {
+  margin: 0.5rem;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: space-between;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  align-content: flex-start;
+  span {
+    margin: 0 0.5rem;
+  }
+}
+
+.task-input {
+  margin: auto 0.5rem;
+  font-size: inherit;
+}
+
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.5rem;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.btn {
+  height: 2rem;
+  width: 90px;
+  text-align: center;
+  border-radius: 10px;
+}

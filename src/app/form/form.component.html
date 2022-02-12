@@ -1,0 +1,90 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+
+  <h1>Todo list</h1>
+
+  <div class="form-control">
+
+    <label>Title</label>
+    <input
+      type="text"
+      placeholder="Enter title..."
+      formControlName="title"
+    >
+
+    <div
+      *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+      class="validation"
+    >
+      <small *ngIf="form.get('title')?.errors?.['required']">
+        You should enter some value
+      </small>
+
+      <small *ngIf="form.get('title')?.errors?.['minlength']">
+        The length should be at least
+        {{form.get('title')?.errors?.['minlength'].requiredLength}} symbols.
+        Now you entered
+        {{form.get('title')?.errors?.['minlength'].actualLength}} only.
+      </small>
+    </div>
+
+    <button class="btn" type="submit" (submit)="submit()" [disabled]="form.invalid">
+      Add title
+    </button>
+
+    <div class="card" formGroupName="filterAndSort">
+      <h2>Sorting and filtering</h2>
+
+      <div class="form-control">
+        <label>Choose sorting style</label>
+        <select formControlName="sort" (change)="select()" placeholder="unsorted">
+          <option hidden value="" disabled selected>unsorted</option>
+          <option value="up">Sort ascending</option>
+          <option value="down">Sort descending</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <input type="text" formControlName="find" placeholder="look for...">
+      </div>
+
+      <button class="btn" type="button" [disabled]="findStatus()" (click)="find()">
+        Find
+      </button>
+      <button class="btn" type="button" [disabled]="findStatus()" (click)="cancelFind()">
+        Cancel
+      </button>
+    </div>
+
+    <fieldset name="filter" class="filter">
+
+      <label>
+        Show all
+        <input #all name="filter" type="radio" value="all" (change)="filter(all.value)" [checked]="checkStatus(all.value)" >
+      </label>
+
+      <label>
+        Done only
+        <input #done name="filter" type="radio" value="done" (change)="filter(done.value)" [checked]="checkStatus(done.value)">
+      </label>
+
+      <label>
+        Undone
+        <input #undone name="filter" type="radio" value="undone" (change)="filter(undone.value)" [checked]="checkStatus(undone.value)">
+      </label>
+
+    </fieldset>
+
+
+  </div>
+
+    <!-- <div class="card">
+      <h2>Date</h2>
+      <div class="form-control">
+        <label>Date</label>
+        <input type="date" placeholder="Date">
+        <div class="validation"></div>
+      </div>
+      <button class="btn" type="button">Set today</button>
+    </div> -->
+    <!-- <button class="btn" type="submit">Отправить</button> -->
+</form>
